@@ -4,16 +4,21 @@
   <meta charset="utf-8">
   <title>Homepage</title>
 
-  <!-- HTTP/2: Server push the critical CSS file -->
-  <link rel="stylesheet" href="/static/homepage/critical.css">
+  {% if http2 %}
+    <!-- HTTP/2: Server push the critical CSS file -->
+    <link rel="stylesheet" href="/static/homepage/critical.css">
+  {% else %}
+    <!-- HTTP/1: Inline critical CSS with <style> -->
+    <style>{{ criticalCSS|safe }}</style>
+  {% endif %}
 
   <!-- Preload remaining CSS, and apply on arrival (with no-js fallback) -->
   <link rel="preload" href="/static/homepage/remaining.css" as="style" onload="this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="/static/homepage/remaining.css"></noscript>
 
   <script>
-    {{ loadCSScore }}
-    {{ loadCSSrelPreload }}
+    {{ loadCSScore|safe }}
+    {{ loadCSSrelPreload|safe }}
   </script>
 </head>
 <body>
