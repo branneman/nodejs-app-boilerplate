@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Homepage</title>
+
+  <!-- HTTP/1: Inline critical CSS with <style> -->
+  <style>
+    {{ criticalCSS }}
+  </style>
+
+  <!-- Preload remaining CSS, and apply on arrival (with no-js fallback) -->
+  <link rel="preload" href="all.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="all.css"></noscript>
+
+  <!-- Paste in the loadCSS implementation and rel=preload polyfill here -->
+  <script>
+    {{ loadCSScore }}
+    {{ loadCSSrelPreload }}
+  </script>
+</head>
+<body>
+  <div class="first-paint">
+    <h1>I'm content above the fold, visible on most (if not all) screens without user interaction!</h1>
+  </div>
+  <div class="after-interaction">
+    <h2>I'm secondary content, visible after user interaction</h2>
+  </div>
+</body>
+</html>
