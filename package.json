@@ -1,16 +1,16 @@
 {
-  "name": "express-http2-playgorund",
+  "name": "playground-expressjs-http2-criticalcss",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
+  "main": "app.js",
+  "author": "Bran van der Meer <branmovic@gmail.com> (http://bran.name/)",
   "license": "ISC",
   "dependencies": {
     "express": "^5.0.0-alpha.5",
     "http2": "^3.3.6",
     "nunjucks": "^3.0.1"
+  },
+  "scripts": {
+    "start": "node app.js"
   }
 }
