@@ -5,13 +5,12 @@
   <title>Homepage</title>
 
   <!-- HTTP/2: Server push the critical CSS file -->
-  <link rel="stylesheet" href="critical.css">
+  <link rel="stylesheet" href="/static/homepage/critical.css">
 
   <!-- Preload remaining CSS, and apply on arrival (with no-js fallback) -->
-  <link rel="preload" href="all.css" as="style" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="all.css"></noscript>
+  <link rel="preload" href="/static/homepage/remaining.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/static/homepage/remaining.css"></noscript>
 
-  <!-- Paste in the loadCSS implementation and rel=preload polyfill here -->
   <script>
     {{ loadCSScore }}
     {{ loadCSSrelPreload }}
