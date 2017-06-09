@@ -1,0 +1,12 @@
+{% set pageTitle = 'Homepage' %}
+{% extends 'shared/layout.njk' %}
+
+{% block content %}
+  <div class="first-paint">
+    <h1>HTTP/{{ httpVersion }}</h1>
+    <h2>I'm content above the fold, visible on most (if not all) screens without user interaction!</h2>
+  </div>
+  <div class="after-interaction">
+    <h2>I'm secondary content, visible after user interaction</h2>
+  </div>
+{% endblock %}

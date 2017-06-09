@@ -1,16 +1,19 @@
 {
-  "name": "playground-expressjs-http2-criticalcss",
+  "name": "playground-nodejs-http2-criticalcss",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "author": "Bran van der Meer <branmovic@gmail.com> (http://bran.name/)",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.0.0-alpha.5",
     "http2": "^3.3.6",
     "nunjucks": "^3.0.1"
   },
   "scripts": {
     "start": "node app.js"
+  },
+  "config": {
+    "serverName": "localhost",
+    "serverPort": 8443
   }
 }
