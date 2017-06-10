@@ -19,7 +19,7 @@ module.exports = (req, res) => {
     });
 
     if (req.httpVersion === '2.0') {
-        const push = res.push('/static/css/homepage-critical.css');
+        const push = res.push('/app/areas/homepage/critical.css');
         push.writeHead(200);
         fs.createReadStream('./app/areas/homepage/critical.css').pipe(push);
         viewData.http2 = true;
