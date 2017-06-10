@@ -1,7 +1,5 @@
 'use strict';
 
-require('longjohn');
-
 process.cwd(__dirname);
 
 const http2 = require('http2');
