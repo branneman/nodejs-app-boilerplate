@@ -7,7 +7,10 @@ module.exports = { send };
  * @param {string} html
  */
 function send(res, html) {
-    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.writeHead(200, {
+        'Content-Type': 'text/html; charset=UTF-8',
+        'Content-Length': html.length
+    });
     res.write(html);
     res.end();
 }

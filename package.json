@@ -7,7 +7,8 @@
   "license": "ISC",
   "dependencies": {
     "http2": "^3.3.6",
-    "nunjucks": "^3.0.1"
+    "nunjucks": "^3.0.1",
+    "serve-static": "^1.12.3"
   },
   "scripts": {
     "start": "node app.js"

@@ -1,6 +1,6 @@
 'use strict';
 
-const fs = require('fs');
+const serveStatic = require('serve-static');
 const homepage = require('./areas/homepage/homepage');
 
 /**
@@ -9,19 +9,17 @@ const homepage = require('./areas/homepage/homepage');
  */
 module.exports = (req, res) => {
 
-    // Statics: critical.css
-    if (req.url.substr(0, 11) === '/app/areas/' && req.url.substr(-13) === '/critical.css') {
-        return fs.createReadStream(`.${req.url}`).pipe(res);
-    }
-
     // Statics
-    if (req.url.substr(0, 7) === '/static') {
-        return fs.createReadStream(`./app${req.url}`).pipe(res);
-    }
+    serveStatic('./app', {
+        acceptRanges: false,
+        etag: false,
+        cacheControl: false,
+        lastModified: false
+    })(req, res, next);
 
     // HTML
-    if (req.url === '/') {
-        return homepage(req, res);
+    function next() {
+        homepage(req, res);
     }
 
 };
