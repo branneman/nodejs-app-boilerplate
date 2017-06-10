@@ -1,6 +1,7 @@
 'use strict';
 
-const serveStatic = require('serve-static');
+const url = require('url');
+const send = require('send');
 const homepage = require('./areas/homepage/homepage');
 
 /**
@@ -10,16 +11,18 @@ const homepage = require('./areas/homepage/homepage');
 module.exports = (req, res) => {
 
     // Statics
-    serveStatic('./app', {
-        acceptRanges: false,
-        etag: false,
-        cacheControl: false,
-        lastModified: false
-    })(req, res, next);
+    const path = url.parse(req.url).pathname;
+    if (path.startsWith('/static/')) {
+        return send(req, path, {
+            root: './app/',
+            acceptRanges: false,
+            etag: false,
+            cacheControl: false,
+            lastModified: false
+        }).pipe(res);
+    }
 
     // HTML
-    function next() {
-        homepage(req, res);
-    }
+    homepage(req, res);
 
 };
