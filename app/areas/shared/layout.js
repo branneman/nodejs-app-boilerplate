@@ -1,6 +1,6 @@
 'use strict';
 
-const read = require('../../util/read');
+const read = require('../../lib/read');
 
 module.exports = {
     baseViewData: {

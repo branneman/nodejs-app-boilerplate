@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <title>{{ pageTitle }}</title>
 
-  {% if http2 %}
-    <!-- HTTP/2: Server push the critical CSS file -->
+  {% if httpVersion === '2.0' %}
+    <!-- HTTP/2.0: Server push the critical CSS file -->
     <link rel="stylesheet" href="{{ criticalCSSurl|safe }}">
   {% else %}
-    <!-- HTTP/1: Inline critical CSS with <style> -->
+    <!-- HTTP/1.x: Inline critical CSS with <style> -->
     <style>{{ criticalCSS|safe }}</style>
   {% endif %}
 

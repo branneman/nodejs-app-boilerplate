@@ -1,9 +1,8 @@
 'use strict';
 
-const fs = require('fs');
-const read = require('../../util/read');
-const send = require('../../util/http-helpers').send;
-const render = require('../../util/render-nunjucks-template');
+const read = require('../../lib/read');
+const { sendHTML, push } = require('../../lib/http-helpers');
+const render = require('../../lib/render-nunjucks-template');
 const layout = require('../shared/layout');
 
 const criticalCSSurl = '/static/css/critical/homepage.css';
@@ -21,17 +20,7 @@ module.exports = (req, res) => {
         criticalCSS
     });
 
-    if (req.httpVersion === '2.0') {
-        const push = res.push(criticalCSSurl);
-        push.writeHead(200, {
-            'Content-Type': 'text/css; charset=UTF-8',
-            'Content-Length': criticalCSS.length
-        });
-        push.write(criticalCSS);
-        push.end();
-        viewData.http2 = true;
-    }
-
-    send(res, render('homepage/homepage', viewData));
+    push(res, criticalCSSurl, criticalCSS);
+    sendHTML(res, render('homepage/homepage', viewData));
 
 };

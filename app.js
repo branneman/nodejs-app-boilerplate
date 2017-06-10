@@ -5,7 +5,7 @@ process.cwd(__dirname);
 const http2 = require('http2');
 const nunjucks = require('nunjucks');
 const pkg = require('./package');
-const read = require('./app/util/read');
+const read = require('./app/lib/read');
 const router = require('./app/router');
 
 nunjucks
