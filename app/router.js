@@ -1,28 +1,44 @@
 'use strict';
 
-const url = require('url');
-const send = require('send');
-const homepage = require('./areas/homepage/homepage');
+module.exports = factory;
+module.exports['@singleton'] = true;
+module.exports['@require'] = [
+    'url',
+    'areas/statics',
+    'areas/homepage',
+    'areas/error'
+];
 
-/**
- * @param {http.ClientRequest} req
- * @param {http.ServerResponse} res
- */
-module.exports = (req, res) => {
+function factory({ parse }, statics, homepage, error) {
 
-    // Statics
-    const path = url.parse(req.url).pathname;
-    if (path.startsWith('/static/')) {
-        return send(req, path, {
-            root: './app/',
-            acceptRanges: false,
-            etag: false,
-            cacheControl: false,
-            lastModified: false
-        }).pipe(res);
+    /**
+     * @param {http.ClientRequest} req
+     * @returns {function}
+     */
+    function getControllerAction(req) {
+
+        const path = parse(req.url).pathname;
+
+        if (path.startsWith('/static/')) {
+            return statics(path);
+        } else if (path === '/') {
+            return homepage;
+        } else {
+            return error.notFound;
+        }
+
     }
 
-    // HTML
-    homepage(req, res);
+    /**
+     * @param {http.ClientRequest} req
+     * @param {http.ServerResponse} res
+     */
+    return (req, res) => {
+        try {
+            getControllerAction(req)(req, res);
+        } catch (err) {
+            error.internalServerError(req, res, err);
+        }
+    };
 
-};
+}

@@ -1,0 +1,12 @@
+{% set pageTitle = 'Internal Server Error' %}
+{% extends 'shared/layout/plain/index.njk' %}
+
+{% block content %}
+  <main class="after-interaction">
+    <h1>Error 500: Internal Server Error</h1>
+    {% if err %}
+      <h2>{{ err.message }}</h2>
+      <pre style="overflow-x:scroll">{{ err.stack }}</pre>
+    {% endif %}
+  </main>
+{% endblock %}

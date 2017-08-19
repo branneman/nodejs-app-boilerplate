@@ -1,22 +1,19 @@
 'use strict';
 
+// Force working dir to current folder
 process.cwd(__dirname);
 
-const http2 = require('http2');
-const nunjucks = require('nunjucks');
-const pkg = require('./package');
-const read = require('./app/lib/read');
-const router = require('./app/router');
+// Configure DI/IoC container
+const IoC = require('electrolyte');
+IoC.use(IoC.dir('.'));
+IoC.use(IoC.dir('app'));
+IoC.use(IoC.node_modules());
 
-nunjucks
-    .configure('./app/areas/')
-    .addGlobal('includePure', nunjucks.render);
-
-const serverOptions = {
-    key: read('./cert/key.pem'),
-    cert: read('./cert/cert.pem')
-};
-
-http2.createServer(serverOptions, router)
-    .listen(pkg.config.serverPort)
-    .on('listening', () => console.log(`HTTP/2+SSL server listening on ${pkg.config.serverPort}`));
+// Start
+IoC.create('bootstrap')
+    .then(app => app())
+    .catch(err => {
+        console.log(err.message);
+        console.log(err.stack);
+        return process.exit(-1);
+    });

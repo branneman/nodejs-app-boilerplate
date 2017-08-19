@@ -1,22 +1,28 @@
 {
-  "name": "playground-nodejs-http2-criticalcss",
   "version": "1.0.0",
-  "description": "",
+  "name": "nodejs-app-boilerplate",
+  "description": "A Node.js server-side app boilerplate with HTTP/2 server push and Critical CSS",
   "main": "app.js",
   "author": "Bran van der Meer <branmovic@gmail.com> (http://bran.name/)",
   "license": "ISC",
+  "scripts": {
+    "start": "node app.js",
+    "test": "jest"
+  },
   "dependencies": {
+    "electrolyte": "^0.5.0",
     "http2": "^3.3.6",
     "mime": "^1.3.6",
     "nunjucks": "^3.0.1",
     "send": "^0.15.3"
   },
-  "scripts": {
-    "start": "node app.js"
+  "devDependencies": {
+    "jest": "^20.0.4"
   },
-  "config": {
-    "serverName": "localhost",
-    "serverPort": 8443
-  },
-  "false": {}
+  "env": {
+    "NODE_ENV": "production",
+    "APP_SERVER_PORT": "8443",
+    "APP_SERVER_CERT_KEY": "cert/key.pem",
+    "APP_SERVER_CERT_CERT": "cert/cert.pem"
+  }
 }

@@ -1,11 +1,11 @@
-# Playground: Critical CSS served via HTTP/2 from Node.js
+# Node.js App Boilerplate with Critical CSS served via HTTP/2 server push
 
 
 ## Setup
 First you need to clone the repo and install it's dependencies
 ```
-git clone git@github.com:branneman/playground-nodejs-http2-criticalcss.git
-cd playground-nodejs-http2-criticalcss
+git clone git@github.com:branneman/nodejs-app-boilerplate.git
+cd nodejs-app-boilerplate
 npm install
 ```
 
@@ -29,6 +29,5 @@ server to anything other than local machine, you can safely create an exception 
 ## Implementation
 See:
 
-- [/app/areas/shared/layout.njk](/app/areas/shared/layout.njk)
-- [/app/areas/homepage/homepage.js](/app/areas/homepage/homepage.js)
-- [/app.js](/app.js)
+- [/app/areas/shared/layout/criticalcss/index.njk](/app/areas/shared/layout/criticalcss/index.njk)
+- [/app/areas/homepage/index.js](/app/areas/homepage/index.js)

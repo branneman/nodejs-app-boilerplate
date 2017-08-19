@@ -1,13 +1,9 @@
 'use strict';
 
-const readFile = require('fs').readFileSync;
+module.exports = factory;
+module.exports['@singleton'] = true;
+module.exports['@require'] = ['fs'];
 
-module.exports = read;
-
-/**
- * @param {string} file
- * @returns {string}
- */
-function read(file) {
-    return readFile(file, 'utf8').toString();
+function factory({ readFileSync }) {
+    return file => readFileSync(file, 'utf8').toString();
 }
