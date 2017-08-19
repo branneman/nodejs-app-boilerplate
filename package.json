@@ -5,6 +5,10 @@
   "main": "app.js",
   "author": "Bran van der Meer <branmovic@gmail.com> (http://bran.name/)",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/branneman/nodejs-app-boilerplate.git"
+  },
   "scripts": {
     "start": "node app.js",
     "test": "jest"
