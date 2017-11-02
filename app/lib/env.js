@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-module.exports = factory;
-module.exports['@singleton'] = true;
-module.exports['@require'] = ['package.json'];
+module.exports = factory
+module.exports['@singleton'] = true
+module.exports['@require'] = ['package.json']
 
-function factory({ env: defaultEnv }) {
-    return Object.assign({}, defaultEnv, process.env);
+function factory ({ env: defaultEnv }) {
+  return Object.assign({}, defaultEnv, process.env)
 }
