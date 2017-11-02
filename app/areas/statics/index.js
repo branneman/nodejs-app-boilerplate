@@ -2,7 +2,10 @@
 
 module.exports = factory
 module.exports['@singleton'] = true
-module.exports['@require'] = ['send']
+module.exports['@require'] = [
+  'url',
+  'send'
+]
 
 const config = {
   root: `${process.cwd()}/app/`,
@@ -12,6 +15,27 @@ const config = {
   lastModified: false
 }
 
-function factory (send) {
-  return path => (req, res) => send(req, path, config).pipe(res)
+function factory ({ parse }, send) {
+  return {
+
+    /**
+     * @param {http.ClientRequest} req
+     * @returns {boolean}
+     */
+    isStatic: req => {
+      const path = parse(req.url).pathname
+      return path.startsWith('/static/')
+    },
+
+    /**
+     * @param {http.ClientRequest} req
+     * @param {http.ServerResponse} res
+     * @returns {boolean}
+     */
+    staticAction: (req, res) => {
+      const path = parse(req.url).pathname
+      send(req, path, config).pipe(res)
+    }
+
+  }
 }

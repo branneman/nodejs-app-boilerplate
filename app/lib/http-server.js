@@ -3,7 +3,7 @@
 module.exports = factory
 module.exports['@singleton'] = true
 module.exports['@require'] = [
-  'http2',
+  'node_modules/http2',
   'lib/env',
   'router'
 ]
