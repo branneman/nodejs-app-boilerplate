@@ -9,5 +9,5 @@ package-lock.json
 yarn.lock
 
 # App
-config.json
+.env
 cert

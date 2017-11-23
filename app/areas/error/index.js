@@ -8,7 +8,7 @@ module.exports['@require'] = [
   'lib/render-view'
 ]
 
-function factory (env, { sendHTML }, render) {
+function factory ({ parsed: env }, { sendHTML }, render) {
   return {
 
     /**

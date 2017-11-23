@@ -9,7 +9,7 @@ module.exports['@require'] = [
   'lib/http-server'
 ]
 
-function factory (nunjucks, env, read, httpServer) {
+async function factory (nunjucks, { parsed: env }, read, httpServer) {
   nunjucks.configure(`${process.cwd()}/app/areas/`)
 
   const serverOptions = {

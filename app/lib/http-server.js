@@ -10,7 +10,7 @@ module.exports['@require'] = [
 
 const msg = loc => `HTTP/2+SSL server listening on https://localhost:${loc.port}/`
 
-function factory (http2, env, router) {
+function factory (http2, { parsed: env }, router) {
   return {
     start: serverOptions => {
       const server = http2
