@@ -1,6 +1,6 @@
 'use strict'
 
-const factory = require('./env')
+const factory = require('.')
 
 describe('env', () => {
   describe('factory function', () => {

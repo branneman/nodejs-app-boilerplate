@@ -1,6 +1,6 @@
 'use strict'
 
-const factory = require('./read')
+const factory = require('.')
 
 describe('read', () => {
   describe('factory function', () => {
