@@ -20,7 +20,7 @@ function factory ({ parse }, send) {
 
     /**
      * @param {http.ClientRequest} req
-     * @returns {boolean}
+     * @returns {Boolean}
      */
     isStatic: req => {
       const path = parse(req.url).pathname
@@ -30,7 +30,6 @@ function factory ({ parse }, send) {
     /**
      * @param {http.ClientRequest} req
      * @param {http.ServerResponse} res
-     * @returns {boolean}
      */
     staticAction: (req, res) => {
       const path = parse(req.url).pathname

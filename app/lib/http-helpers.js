@@ -9,8 +9,8 @@ function factory (mime) {
 
     /**
      * @param {http.ServerResponse} res
-     * @param {number} statusCode
-     * @param {string} html
+     * @param {Number} statusCode
+     * @param {String} html
      */
     sendHTML (res, statusCode, html) {
       res.writeHead(statusCode, {
@@ -23,8 +23,8 @@ function factory (mime) {
 
     /**
      * @param {http.ServerResponse} res
-     * @param {string} fileName
-     * @param {string} fileContents
+     * @param {String} fileName
+     * @param {String} fileContents
      */
     push (res, fileName, fileContents) {
       if (!res.push) return
